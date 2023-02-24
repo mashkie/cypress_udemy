@@ -1,8 +1,10 @@
 /// <reference types="Cypress" />
 
 describe('page navigation', () => {
+  beforeEach(() => {
+    cy.visit('/');
+  });
   it('should navigate between pages', () => {
-    cy.visit('http://localhost:5173/');
     cy.get('[data-cy="header-about-link"]').click();
     cy.location('pathname').should('eq', '/about'); // /about => About page
     cy.go('back');
